@@ -4,12 +4,11 @@ from sys import exit
 def gold_room():
     print("This room is filled with gold. How much do you take?")
 
-    next = input("> ")
-    # next = input("> ")
-    # if "0" in next or "1" in next:
-    #     how_much = int(next)
-    # else:
-    #     dead("Man, learn to type a number.")
+    next = input("\n> ")
+    if "0" in next or "1" in next:
+        how_much = int(next)
+    else:
+        dead("Man, learn to type a number.")
 
     if how_much < 50:
         print("Nice, you're not greedy, you win! ")
@@ -26,9 +25,15 @@ def bear_room():
     bear_moved = False
 
     while True:
-        next = input("> ")
+        next = input(
+            """1. take honey 
+2. taunt bear
+3. open door
 
-        if next == "Take honey":
+> """
+        )
+
+        if next == "take honey":
             dead("The bear looks at you and then slaps your face off")
         elif next == "taunt bear" and not bear_moved:
             print("The bear has moved from the door. You can go through it now.")
@@ -43,13 +48,18 @@ def bear_room():
 
 def cthulu_room():
     print("Here you see the great evil Cthulu. ")
-    print("He, it, whatever stares at you and you go insane.")
+    print("Whatever it stares at goes insane.")
     print("Do you flee for your life or eat your head. ")
 
-    next = input("> ")
+    next = input(
+        """1. flee
+2. chew head
+
+> """
+    )
     if "flee" in next:
         start()
-    elif "head" in next:
+    elif "chew head" in next:
         dead("Well that was tasty!")
     else:
         cthulu_room()
@@ -65,7 +75,7 @@ def start():
     print("There is a door to your right and left.")
     print("Which one do you prefer?")
 
-    next = input("> ")
+    next = input("\n> ")
 
     if next == "left":
         bear_room()
